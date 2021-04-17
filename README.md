@@ -1,34 +1,10 @@
 # go-torch [![Build Status](https://travis-ci.org/uber/go-torch.svg?branch=master)](https://travis-ci.org/uber/go-torch) [![Coverage Status](http://coveralls.io/repos/uber/go-torch/badge.svg?branch=master&service=github)](http://coveralls.io/github/uber/go-torch?branch=master) [![GoDoc](https://godoc.org/github.com/uber/go-torch?status.svg)](https://godoc.org/github.com/uber/go-torch)
 
-## go-torch is deprecated, use pprof instead
+## Installation
 
-As of Go 1.11, flamegraph visualizations are available in `go tool pprof` directly!
-
+```bash
+go install github.com/phuslu/go-torch
 ```
-# This will listen on :8081 and open a browser.
-# Change :8081 to a port of your choice.
-$ go tool pprof -http=":8081" [binary] [profile]
-```
-
-If you cannot use Go 1.11, you can get the latest `pprof` tool and use it instead:
-
-```
-# Get the pprof tool directly
-$ go get -u github.com/google/pprof
-
-$ pprof -http=":8081" [binary] [profile]
-```
-
-## Synopsis
-
-Tool for stochastically profiling Go programs. Collects stack traces and
-synthesizes them into a flame graph. Uses Go's built in [pprof][] library.
-
-[pprof]: https://golang.org/pkg/net/http/pprof/
-
-## Example Flame Graph
-
-[![Inception](http://uber.github.io/go-torch/meta.svg)](http://uber.github.io/go-torch/meta.svg)
 
 ## Basic Usage
 
