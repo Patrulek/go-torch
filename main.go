@@ -30,9 +30,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/uber/go-torch/pprof"
-	"github.com/uber/go-torch/renderer"
-	"github.com/uber/go-torch/torchlog"
+	"github.com/Patrulek/go-torch/pprof"
+	"github.com/Patrulek/go-torch/renderer"
+	"github.com/Patrulek/go-torch/torchlog"
 
 	gflags "github.com/jessevdk/go-flags"
 )
@@ -56,12 +56,6 @@ type outputOptions struct {
 	Inverted          bool   `long:"inverted" description:"icicle graph"`
 }
 
-//go:embed stackcollapse.pl
-var stackCollapseScriptsContent []byte
-
-//go:embed flamegraph.pl
-var flameGraphScriptsContent []byte
-
 // main is the entry point of the application
 func main() {
 	fmt.Printf(`Example:
@@ -69,6 +63,7 @@ func main() {
   go-torch -alloc_space -cum --colors mem -f mem.svg http://127.0.0.1:9001/debug/pprof/heap
 
 `)
+
 	if err := runWithArgs(os.Args[1:]...); err != nil {
 		torchlog.Fatalf("Failed: %v", err)
 	}
@@ -95,12 +90,6 @@ func runWithArgs(args ...string) error {
 }
 
 func runWithOptions(allOpts *options, remaining []string) error {
-	ioutil.WriteFile("stackcollapse.pl", stackCollapseScriptsContent, 0755)
-	defer os.Remove("stackcollapse.pl")
-
-	ioutil.WriteFile("flamegraph.pl", flameGraphScriptsContent, 0755)
-	defer os.Remove("flamegraph.pl")
-
 	pprofRawOutput, err := pprof.GetRaw(allOpts.PProfOptions, remaining)
 	if err != nil {
 		return fmt.Errorf("could not get raw output from pprof: %v", err)

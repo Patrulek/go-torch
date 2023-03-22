@@ -25,6 +25,7 @@ import (
 	"errors"
 	"os"
 	"os/exec"
+	"runtime"
 )
 
 var errNoPerlScript = errors.New("Cannot find flamegraph scripts in the PATH or current " +
@@ -33,8 +34,8 @@ var errNoPerlScript = errors.New("Cannot find flamegraph scripts in the PATH or 
 	"Alternatively, you can run go-torch with the --raw flag.")
 
 var (
-	stackCollapseScripts = []string{"stackcollapse.pl", "./stackcollapse.pl", "./FlameGraph/stackcollapse.pl"}
-	flameGraphScripts    = []string{"flamegraph", "flamegraph.pl", "./flamegraph.pl", "./FlameGraph/flamegraph.pl", "flame-graph-gen"}
+	stackCollapseScripts = []string{"stackcollapse.pl", "./perl/stackcollapse.pl", "./stackcollapse.pl", "./FlameGraph/stackcollapse.pl"}
+	flameGraphScripts    = []string{"flamegraph.pl", "./perl/flamegraph.pl", "./flamegraph.pl", "./FlameGraph/flamegraph.pl", "flame-graph-gen"}
 )
 
 // findInPath returns the first path that is found in PATH.
@@ -50,6 +51,10 @@ func findInPath(paths []string) string {
 // runScript runs scriptName with the given arguments, and stdin set to inData.
 // It returns the stdout on success.
 func runScript(scriptName string, args []string, inData []byte) ([]byte, error) {
+	if runtime.GOOS == "windows" {
+		args = append([]string{scriptName}, args...)
+		scriptName = "perl/bin/perl.exe"
+	}
 	cmd := exec.Command(scriptName, args...)
 	cmd.Stdin = bytes.NewReader(inData)
 	cmd.Stderr = os.Stderr

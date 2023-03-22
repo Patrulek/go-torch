@@ -26,9 +26,9 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/Patrulek/go-torch/stack"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"github.com/uber/go-torch/stack"
 )
 
 func parseTestRawData(t *testing.T, file string) ([]byte, *rawParser) {

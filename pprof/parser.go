@@ -29,7 +29,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/uber/go-torch/stack"
+	"github.com/Patrulek/go-torch/stack"
 )
 
 type readState int
@@ -157,7 +157,9 @@ func (p *rawParser) toProfile() (*stack.Profile, error) {
 }
 
 // addLocation parses a location that looks like:
-//   292: 0x49dee1 github.com/uber/tchannel/golang.(*Frame).ReadIn :0 s=0
+//
+//	292: 0x49dee1 github.com/uber/tchannel/golang.(*Frame).ReadIn :0 s=0
+//
 // and creates a mapping from funcID to function name.
 func (p *rawParser) addLocation(line string) {
 	parts := splitBySpace(line)
@@ -177,6 +179,13 @@ func (p *rawParser) addLocation(line string) {
 		}
 		return
 	}
+
+	// HACK: its not <292:> part; path to source can possibly contain spaces (eg. windows paths)
+	// thats why it didnt fell into switch statement
+	if !strings.HasSuffix(parts[0], ":") {
+		return
+	}
+
 	funcID := p.toFuncID(strings.TrimSuffix(parts[0], ":"))
 	if strings.HasPrefix(parts[2], "M=") {
 		p.funcNames[funcID] = parts[3]
@@ -191,7 +200,9 @@ type stackRecord struct {
 }
 
 // addSample parses a sample that looks like:
-//   1   10000000: 1 2 3 4
+//
+//	1   10000000: 1 2 3 4
+//
 // and creates a stackRecord for it.
 func (p *rawParser) addSample(line string) {
 	if strings.Contains(line, "bytes:[") {
