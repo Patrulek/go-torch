@@ -26,7 +26,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/Patrulek/go-torch/stack"
+	"github.com/patrulek/go-torch/stack"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

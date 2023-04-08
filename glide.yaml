@@ -1,4 +1,4 @@
-package: github.com/Patrulek/go-torch
+package: github.com/patrulek/go-torch
 import:
 - package: github.com/fatih/color
 - package: github.com/jessevdk/go-flags

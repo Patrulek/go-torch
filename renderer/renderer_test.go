@@ -24,7 +24,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/Patrulek/go-torch/stack"
+	"github.com/patrulek/go-torch/stack"
 )
 
 func TestToFlameInput(t *testing.T) {

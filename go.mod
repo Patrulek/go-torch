@@ -1,4 +1,4 @@
-module github.com/Patrulek/go-torch
+module github.com/patrulek/go-torch
 
 go 1.20
 

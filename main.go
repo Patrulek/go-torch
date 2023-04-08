@@ -30,9 +30,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/Patrulek/go-torch/pprof"
-	"github.com/Patrulek/go-torch/renderer"
-	"github.com/Patrulek/go-torch/torchlog"
+	"github.com/patrulek/go-torch/pprof"
+	"github.com/patrulek/go-torch/renderer"
+	"github.com/patrulek/go-torch/torchlog"
 
 	gflags "github.com/jessevdk/go-flags"
 )

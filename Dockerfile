@@ -14,8 +14,8 @@ RUN apk --update add git && \
   git reset --hard $FLAMEGRAPH_SHA && \
   rm -rf .git )
 
-COPY . /go/src/github.com/Patrulek/go-torch
+COPY . /go/src/github.com/patrulek/go-torch
 
-RUN cd /go/src/github.com/Patrulek/go-torch && glide install && go install ./...
+RUN cd /go/src/github.com/patrulek/go-torch && glide install && go install ./...
 
 ENTRYPOINT ["go-torch"]

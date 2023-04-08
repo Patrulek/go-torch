@@ -29,7 +29,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/Patrulek/go-torch/stack"
+	"github.com/patrulek/go-torch/stack"
 )
 
 type readState int

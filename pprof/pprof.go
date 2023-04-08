@@ -27,7 +27,7 @@ import (
 	"os/exec"
 	"strings"
 
-	"github.com/Patrulek/go-torch/torchlog"
+	"github.com/patrulek/go-torch/torchlog"
 )
 
 // Options are parameters for pprof.

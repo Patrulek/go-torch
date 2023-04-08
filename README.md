@@ -123,7 +123,7 @@ using a library like [this one](https://github.com/e-dard/netbug).
 ## Installation
 
 ```bash
-go get github.com/Patrulek/go-torch
+go get github.com/patrulek/go-torch
 ```
 
 You can also use go-torch using docker:
@@ -141,7 +141,7 @@ When using the `go-torch` binary locally, you will need the Flamegraph scripts
 in your `PATH`:
 
 ```bash
-cd $GOPATH/src/github.com/Patrulek/go-torch
+cd $GOPATH/src/github.com/patrulek/go-torch
 git clone https://github.com/brendangregg/FlameGraph.git
 ```
 
@@ -151,7 +151,7 @@ git clone https://github.com/brendangregg/FlameGraph.git
 
 ```bash
 go get github.com/Masterminds/glide
-cd $GOPATH/src/github.com/Patrulek/go-torch
+cd $GOPATH/src/github.com/patrulek/go-torch
 glide install
 ```
 
@@ -159,7 +159,7 @@ glide install
 
 ```bash
 $ go test ./...
-ok    github.com/Patrulek/go-torch   0.012s
-ok    github.com/Patrulek/go-torch/graph   0.017s
-ok    github.com/Patrulek/go-torch/visualization 0.052s
+ok    github.com/patrulek/go-torch   0.012s
+ok    github.com/patrulek/go-torch/graph   0.017s
+ok    github.com/patrulek/go-torch/visualization 0.052s
 ```
